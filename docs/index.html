@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1d4ed8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>工艺矿物学磨矿分析系统</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.85.1/build/stlite.css"
+    />
+    <style>
+      html,
+      body,
+      #root {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        overflow: hidden;
+        background: #f5f7fb;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Microsoft YaHei", sans-serif;
+      }
+
+      #boot {
+        display: grid;
+        min-height: 100dvh;
+        place-items: center;
+        color: #172033;
+      }
+
+      .boot-card {
+        width: min(88vw, 460px);
+        padding: 28px;
+        border: 1px solid #dfe5ee;
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 18px 50px rgba(31, 41, 55, 0.08);
+      }
+
+      .boot-card h1 {
+        margin: 0 0 10px;
+        font-size: 22px;
+      }
+
+      .boot-card p {
+        margin: 0;
+        color: #64748b;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .boot-line {
+        height: 4px;
+        margin-top: 20px;
+        overflow: hidden;
+        border-radius: 2px;
+        background: #e2e8f0;
+      }
+
+      .boot-line::after {
+        display: block;
+        width: 45%;
+        height: 100%;
+        border-radius: inherit;
+        background: #2563eb;
+        content: "";
+        animation: loading 1.3s ease-in-out infinite;
+      }
+
+      @keyframes loading {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(240%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div id="boot">
+        <div class="boot-card">
+          <h1>工艺矿物学磨矿分析系统</h1>
+          <p>正在浏览器中加载计算引擎和绘图组件，首次打开约需 20-60 秒。</p>
+          <div class="boot-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.85.1/build/stlite.js";
+
+      const root = document.getElementById("root");
+      root.innerHTML = "";
+
+      const files = {
+        "app.py": { url: "./app.py?v=3" },
+        "ui_pages.py": { url: "./ui_pages.py?v=3" },
+        "web_compat.py": { url: "./web_compat.py?v=3" },
+        "core/__init__.py": { url: "./core/__init__.py" },
+        "core/bond.py": { url: "./core/bond.py" },
+        "core/calibration.py": { url: "./core/calibration.py" },
+        "core/closed_circuit.py": { url: "./core/closed_circuit.py" },
+        "core/evaluation.py": { url: "./core/evaluation.py" },
+        "core/kinetics.py": { url: "./core/kinetics.py" },
+        "core/liberation.py": { url: "./core/liberation.py" },
+        "core/mineral_data.py": { url: "./core/mineral_data.py" },
+        "core/storage.py": { url: "./core/storage.py" },
+        "core/validation.py": { url: "./core/validation.py" },
+        "data/minerals.csv": { url: "./data/minerals.csv" },
+      };
+
+      mount(
+        {
+          requirements: ["pandas", "numpy", "plotly==5.24.1"],
+          entrypoint: "app.py",
+          files,
+          streamlitConfig: {
+            "client.toolbarMode": "viewer",
+            "client.showErrorDetails": false,
+            "theme.base": "light",
+            "theme.primaryColor": "#2563eb",
+            "theme.backgroundColor": "#ffffff",
+            "theme.secondaryBackgroundColor": "#f5f7fb",
+            "theme.textColor": "#172033",
+          },
+        },
+        root,
+      );
+    </script>
+  </body>
+</html>
