@@ -7,13 +7,3 @@ services:
     dockerfilePath: ./Dockerfile
     healthCheckPath: /_stcore/health
     autoDeploy: true
-  - type: web
-    name: grinding-mineralogy-classic
-    runtime: docker
-    plan: free
-    region: singapore
-    rootDir: legacy-v1-mobile
-    dockerfilePath: ./Dockerfile
-    dockerContext: .
-    healthCheckPath: /_stcore/health
-    autoDeploy: true
