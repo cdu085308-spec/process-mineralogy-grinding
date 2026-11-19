@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: grinding-mineralogy
+    name: grinding-v2
     runtime: docker
     plan: free
     region: singapore
