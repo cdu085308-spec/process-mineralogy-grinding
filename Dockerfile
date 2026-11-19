@@ -6,12 +6,12 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-COPY legacy-v1-mobile/requirements.txt /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
 
 RUN python -m pip install --upgrade pip \
     && python -m pip install -r /app/requirements.txt
 
-COPY legacy-v1-mobile /app
+COPY . /app
 
 EXPOSE 10000
 
