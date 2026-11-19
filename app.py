@@ -1,11 +1,11 @@
-"""工艺矿物学磨矿分析系统 - Streamlit Web App"""
+﻿"""工艺矿物学磨矿分析系统 - Streamlit Web App"""
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 
-st.set_page_config(page_title="工艺矿物学磨矿分析系统", page_icon="⚒", layout="wide")
+st.set_page_config(page_title="工艺矿物学磨矿分析系统 · 第二版", page_icon="⚒", layout="wide")
 
 from core.mineral_data import *
 from core.bond import *
@@ -46,6 +46,7 @@ if "calibration_factor" not in st.session_state:
     st.session_state.calibration_factor = None
 
 st.sidebar.markdown("# ⚒ 磨矿分析系统")
+st.sidebar.caption("第二版 · 完整功能")
 st.sidebar.markdown("---")
 page = st.sidebar.radio(
     "功能菜单",
